@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Registro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Please login</h1>
+      <br>
+      <form action="http://localhost:5000/registro" method="post">
+        <input type="text" placeholder="Curso" name="curso" value="{{
+            request.form.curso }}">
+        <input type="text" placeholder="Matricula" name="matricula" value="{{
+            request.form.matricula }}">
+        <input type="text" placeholder="Nome" name="nome" value="{{
+          request.form.nome }}">
+        <input type="password" placeholder="Senha" name="senha" value="{{
+          request.form.senha }}">
+        <input class="btn btn-default" type="submit" value="Registro">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>

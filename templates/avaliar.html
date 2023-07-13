@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Posts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <form action="http://localhost:5000/avaliar" method="post">
+        <h2>Avalição</h2>
+
+        <h4>Avaliação de:</h4>
+        <select class="form-select" aria-label="Default select example" name="obj_avaliado">
+            <option selected value="professor">Professor</option>
+            <option value="departamento">Departamento</option>
+        </select>
+
+        <h4>Como você avalia:</h4>
+        <select class="form-select" aria-label="Default select example" name="avaliacao">
+            <option value="ruim">Ruim</option>
+            <option value="regular">Regular</option>
+            <option selected value="bom">Bom</option>
+            <option value="otimo">Ótimo</option>
+        </select>
+
+        <h4>Deixe um comentário sobre sua avaliação:</h4>
+        <input type="text" placeholder="Comentario" name="comentario" value="{{ request.form.comentario }}">
+
+        <input class="btn btn-default" type="submit" value="Avaliar">
+      </form>
+    </div>
+  </body>
+</html>

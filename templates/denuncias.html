@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Denuncia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <form action="http://localhost:5000/registro" method="post"></form>
+        <h4>Por que você está denunciando esse post?</h4>
+        <select class="form-select" aria-label="Default select example" name="motivo">
+            <option selected value="ofensivo">Esse comentário é ofensivo.</option>
+            <option value="mentira">Esse comentário contem uma informação falsa.</option>
+            <option value="errado">Esse comentário inclui uma informação errada</option>
+        </select>
+
+        <h4>Descreva porque esse post deve ser apagado:</h4>
+        <input type="text" placeholder="Comentario" name="comentario" value="{{ request.form.comentario }}">
+
+        <input class="btn btn-default" type="submit" value="Denunciar">
+      </form>
+    </div>
+  </body>
+</html>
