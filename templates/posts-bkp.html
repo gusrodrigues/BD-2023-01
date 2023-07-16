@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Posts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <p><a href="{{ url_for('login') }}">Login</a></p>
+      <p><a href="{{ url_for('denuncias') }}">Denuncias</a></p>
+      <p><a href="{{ url_for('avaliar') }}">Avaliar</a></p>
+
+      <h1>Avaliações</h1>
+        {% for avaliacao in avaliacoes %}
+            <h3>Turma: {{ avaliacao.0 }}</h3>
+            <h3>Professor: {{ avaliacao.1 }}</h3>
+            <h3>Avaliação: {{ avaliacao.2 }}</h3>
+            <p><a href="{{ url_for('denuncias') }}">Denunciar comentário</a></p><hr>
+        {% endfor %}
+    </div>
+  </body>
+</html>

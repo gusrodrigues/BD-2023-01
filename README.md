@@ -2,10 +2,13 @@
 Repositório do projeto final
 
 # Instalar pip
-python3 -m pip install flask
+$ python3 -m pip install flask
 
 # Instalar bibliotecas necessárias para executar sql
-python3 -m pip install psycopg2-binary
+$ python3 -m pip install psycopg2-binary
+
+# Como executar o projeto
+$ python3 main.py
 
 # Criar tabela de estudantes
 CREATE TABLE public.estudantes (

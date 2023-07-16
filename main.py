@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
 import db
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='static', template_folder='templates')
 
 @app.route("/", methods=['GET'])
 def home():
@@ -60,6 +60,14 @@ def denuncias():
     if request.method == 'POST':
         pass
 
+
+@app.route('/avaliacoes', methods=['GET'])
+def avaliacoes():
+    if request.method == 'GET':
+        cursor = db.connect().cursor()
+        avaliacoes = db.selectAll(cursor, "avaliacoes")
+        return render_template('avaliacoes.html', avaliacoes = avaliacoes)
+
 @app.route('/avaliar', methods=['GET', 'POST'])
 def avaliar():
     if request.method == 'GET':
@@ -78,6 +86,13 @@ def avaliar():
         conexao.commit()
 
         return redirect(url_for('posts'))
+
+@app.route('/departamentos', methods=['GET', 'POST'])
+def departamentos():
+    if request.method == 'GET':
+        cursor = db.connect().cursor()
+        departamentos = db.selectAll(cursor, "departamentos")
+        return render_template('departamentos.html', departamentos = departamentos)
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000, debug=True)
