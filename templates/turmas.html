@@ -80,19 +80,21 @@
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>Cod</th>
-                    <th>Nome</th>
-                    <th>Avaliar</th>
-                    <th>Denuncia</th>
+                    <th>Professor</th>
+                    <th>Local</th>
+                    <th>Horario</th>
+                    <th>Periodo</th>
                 </tr>
             </thead>
             <tbody>
-              {% for departamento in departamentos %}
+              {% for turma in turmas %}
                   <tr>
-                      <td>{{ departamento[1] }}</td>
-                      <td>{{ departamento[0] }}</td>
-                      <td><a href="{{ url_for('avaliar', avaliado=departamento[0] )}}" class="btn btn-primary">Avaliar</a></td>
-                      <td><a href="/denunciar" class="btn btn-primary">Denunciar</a></td>
+                      <td>{{ turma[0] }}</td>
+                      <td>{{ turma[6] }}</td>
+                      <td>{{ turma[1] }}</td>
+                      <td>{{ turma[3] }}</td>
+                      <td><a href="#" class="btn btn-primary">Avaliar</a></td>
+                      <td><a href="#" class="btn btn-primary">Denunciar</a></td>
                   </tr>
               {% endfor %}
             </tbody>

@@ -68,14 +68,22 @@ def avaliacoes():
         avaliacoes = db.selectAll(cursor, "avaliacoes")
         return render_template('avaliacoes.html', avaliacoes = avaliacoes)
 
-@app.route('/avaliar', methods=['GET', 'POST'])
-def avaliar():
+@app.route('/avaliar/<avaliado>', methods=['GET', 'POST'])
+def avaliar(avaliado):
     if request.method == 'GET':
-        return render_template('avaliar.html')
+        print(avaliado)
+        return render_template('avaliar.html', avaliado = avaliado)
 
     if request.method == 'POST':
-        colunas = '"turma", "professor", "avaliacao"'
-        valores = (request.form['obj_avaliado'], request.form['avaliacao'], request.form['comentario'])
+        colunas = '"avaliacao", "avaliado", "nome", "comentario"'
+        valores = (request.form['avaliacao'], avaliado.replace("'", "").strip('][').split(', ')[0], avaliado.replace("'", "").strip('][').split(', ')[1], request.form['comentario'])
+
+        print("---------------------------------")
+        print(colunas)
+        print(valores)
+        print(avaliado.strip('][').split(', '))
+        print(type(avaliado.strip('][').split(', ')))
+        print("---------------------------------")
 
         conexao = db.connect() 
         cursor = conexao.cursor()
@@ -93,6 +101,20 @@ def departamentos():
         cursor = db.connect().cursor()
         departamentos = db.selectAll(cursor, "departamentos")
         return render_template('departamentos.html', departamentos = departamentos)
+
+@app.route('/disciplinas', methods=['GET', 'POST'])
+def disciplinas():
+    if request.method == 'GET':
+        cursor = db.connect().cursor()
+        disciplinas = db.selectAll(cursor, "disciplinas")
+        return render_template('disciplinas.html', disciplinas = disciplinas)
+
+@app.route('/turmas', methods=['GET', 'POST'])
+def turmas():
+    if request.method == 'GET':
+        cursor = db.connect().cursor()
+        turmas = db.selectAll(cursor, "turmas")
+        return render_template('turmas.html', turmas = turmas)
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000, debug=True)

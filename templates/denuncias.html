@@ -7,17 +7,12 @@
   <body>
     <div class="container">
       <form action="http://localhost:5000/registro" method="post"></form>
-        <h4>Por que você está denunciando esse post?</h4>
-        <select class="form-select" aria-label="Default select example" name="motivo">
-            <option selected value="ofensivo">Esse comentário é ofensivo.</option>
-            <option value="mentira">Esse comentário contem uma informação falsa.</option>
-            <option value="errado">Esse comentário inclui uma informação errada</option>
-        </select>
-
-        <h4>Descreva porque esse post deve ser apagado:</h4>
-        <input type="text" placeholder="Comentario" name="comentario" value="{{ request.form.comentario }}">
-
-        <input class="btn btn-default" type="submit" value="Denunciar">
+        <h4>Deixe um comentário sobre sua avaliação:</h4>
+        <div class="input-group">
+          <span class="input-group-text">With textarea</span>
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+        <input class="btn btn-default" type="submit" value="Avaliar">
       </form>
     </div>
   </body>
